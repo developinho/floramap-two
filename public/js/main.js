@@ -4,8 +4,8 @@ var AppRouter = Backbone.Router.extend({
 		""                   : "home",
 		"plants"	: "list",
 		"plants/page/:page"	 : "list",
-		"plants/add"         : "addPlant,
-		"plants/:id"         : "wineDetails",
+		"plants/add"         : "addPlant",
+		"plants/:id"         : "plantDetails",
 		"about"              : "about"
 	},
 

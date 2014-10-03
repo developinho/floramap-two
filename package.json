@@ -1,12 +1,22 @@
 {
-    "name": "wine-cellar",
-    "description": "Wine Cellar Application",
+    "name": "FloraMap",
+    "description": "FloraMap Application",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
         "express": "*",
         "mongoose": "*",
         "body-parser": "*",
-        "backbone": "*"
+        "backbone": "*",
+        "socket.io": "*",
+        "mongodb": "*",
+        "bson": "*",
+        "morgan": "*",
+        "body-parser": "*"
+    },
+
+    "engines": {
+        "node": "*",
+        "npm": "*"
     }
 }
