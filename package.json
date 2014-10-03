@@ -12,7 +12,10 @@
         "mongodb": "*",
         "bson": "*",
         "morgan": "*",
-        "body-parser": "*"
+        "body-parser": "*",
+        "underscore": "*",
+        "bootstrap": "*",
+        "jquery": "*"
     },
 
     "engines": {
