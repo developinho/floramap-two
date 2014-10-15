@@ -1,4 +1,5 @@
 var express = require('express'),
+    bodyParser = require('body-parser'),
     path = require('path'),
     http = require('http'),
     plant = require('./routes/plants');
@@ -9,13 +10,17 @@ process.env.NODE_ENV = 'development';
 
 if (process.env.NODE_ENV === 'development') {
     app.set('port', process.env.PORT || 3000);
-    var logger = require('morgan');
+    
+    /*var logger = require('morgan');
 	app.use(logger); 
 	var bodyParser = require('body-parser');
-    app.use(bodyParser.json())
+    app.use(bodyParser.json())*/
+    
+    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));
-};
 
+};
 
 app.get('/plants', plant.findAll);
 app.get('/plants/:id', plant.findById);
