@@ -12,7 +12,6 @@
         "mongodb": "*",
         "bson": "*",
         "morgan": "*",
-        "body-parser": "*",
         "underscore": "*",
         "bootstrap": "*",
         "jquery": "*"
