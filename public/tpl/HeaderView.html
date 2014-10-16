@@ -1,21 +1,25 @@
-<div class="navbar navbar-inverse navbar-fixed-top" style="z-index: 10;">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+                <img src="img/logo.png"  class="logo_img" alt="Flora MAP">
             </a>
-            <a class="brand" href="#">Node Cellar</a>
-
-            <div class="nav-collapse collapse">
-
-                <ul class="nav">
-                    <li class="add-menu"><a href="#plants">Browse Plants</a></li>
-                    <li class="add-menu"><a href="#plants/add"><i class="icon-edit icon-white"></i> Add Plant</a></li>
-                </ul>
-
-                <ul class="nav pull-right">
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="add-menu"><a href="#plants">Browse Plants</a></li>
+                <li class="add-menu"><a href="#plants/add"><i class="icon-edit icon-white"></i> Add Plant</a></li>
+                <li class="add-menu"><a href="#login"><i class="icon-edit icon-white"></i> Login</a></li>
+            </ul>
+            </ul><ul class="nav navbar-nav navbar-right">
                     <li class="about-menu"><a href="#about">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
@@ -24,17 +28,10 @@
                             <li><a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></li>
                             <li><a href="http://nodejs.org/" target="_blank">Node.js</a>
                             <li><a href="http://expressjs.com/mongodb" target="_blank">Express</a>
-                            <li><a href="http://www.mongodb.org/" target="_blank">MongoDB</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="nav-header">This App</li>
-                            <li><a href="#" target="_blank">GitHub Repository</a></li>
-                            <li><a href="http://coenraets.org" target="_blank">Author's Blog</a></li>
+                            <li><a href="http://www.mongodb.org/" target="_blank">MongoDB</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <!--/.nav-collapse -->
         </div>
     </div>
-</div>
+</nav>

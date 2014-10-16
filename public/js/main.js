@@ -2,7 +2,8 @@ var AppRouter = Backbone.Router.extend({
 
 	routes: {
 		""                   : "home",
-		"plants"	: "list",
+		"login"              : "login",
+		"plants"	         : "list",
 		"plants/page/:page"	 : "list",
 		"plants/add"         : "addPlant",
 		"plants/:id"         : "plantDetails",
@@ -20,6 +21,13 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.homeView.el);
         this.headerView.selectMenuItem('home-menu');
+    },
+
+    login: function () {
+        if (!this.loginView) {
+            this.loginView = new LoginView();
+        }
+        $('#content').html(this.loginView.el);
     },
 
 	list: function(page) {
@@ -55,7 +63,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'WineView', 'WineListItemView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });

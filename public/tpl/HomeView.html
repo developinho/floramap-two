@@ -1,38 +1,67 @@
-<div class="home-hero">
-            <h1>Welcome to Node Cellar</h1>
-            <h3>A sample application built with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB</h3>
+    <div class="col-md-6"></div>
+    <div class="col-md-6 map_screen">
+            <article>
+                <span id="plants_map"></span>
+            </article>
 
-    <br/>
-    <div style="opacity: .9;">
-        <a class="btn btn-large" href="#wines"><img src="img/wine.png" class="pull-left" style="margin-right:6px;"/> Start Browsing<br/>Node Cellar</a>
-        <a class="btn btn-large" href="#">
-            <img src="img/github.png" class="pull-left" style="margin-right:6px"/> View Project<br>on GitHub</a>
-    </div>
+            <script>
 
+                $(document).ready(function() {
+                    findMe();
+                });
 
-</div>
+                function findMe() {
+                    function success(position) {
+                        var s = document.querySelector('#plants_map');
 
-<div class="bs-docs-social">
-  <div class="container">
-    <ul class="bs-docs-social-buttons">
-      <li>
-        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=ccoenraets&repo=nodecellar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-      </li>
-      <li>
-        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=ccoenraets&repo=nodecellar&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="98px" height="20px"></iframe>
-      </li>
+                        var mapcanvas = document.createElement('div');
+                        mapcanvas.id = 'mapcanvas';
+                        mapcanvas.style.height =  '410px';
 
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        document.querySelector('article').appendChild(mapcanvas);
 
+                        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        var myOptions = {
+                            zoom: 17,
+                            center: latlng
+                        };
 
-      <li class="follow-btn">
-        <a href="https://twitter.com/ccoenraets" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @ccoenraets</a>
-      </li>
+                        var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+                        var image = 'img/marker.png';
+                        var contentString = '<div id="content"> <h4>Hello</h4>' +
+                                'Well, this is just a little test with popups and markers. See ya!</div>';
 
-      <li class="tweet-btn">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://coenraets.org:3000" data-count="horizontal" data-via="ccoenraets">Tweet</a>
-      </li>
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
 
-    </ul>
-  </div>
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map,
+                            title: 'You are here! (at least within a ' + position.coords.accuracy + ' meter radius)',
+                            icon: image
+                        });
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infowindow.open(map, marker);
+                        });
+
+                    }
+
+                    function error(msg) {
+                        var s = document.querySelector('#plants_map');
+                        s.innerHTML = typeof msg == 'string' ? msg : "failed";
+                        s.className = 'fail';
+
+                        // console.log(arguments);
+                    }
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(success, error);
+                    } else {
+                        error('not supported');
+                    }
+
+                }
+            </script>
+    </div> 
 </div>

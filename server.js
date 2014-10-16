@@ -1,17 +1,16 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     path = require('path'),
-    http = require('http'),
-   // logger = require('morgan'),
-    plant = require('./routes/plants');
-
-var app = express();
+    http = require('http'), 
+    plant = require('./routes/plants'),
+    app = express();
 
 process.env.NODE_ENV = 'development';
 
 if (process.env.NODE_ENV === 'development') {
     app.set('port', process.env.PORT || 3000);
-
+    
+    
    // app.use(logger); 
     app.use(bodyParser.urlencoded());
     app.use(bodyParser.json());

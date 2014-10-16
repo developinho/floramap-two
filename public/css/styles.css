@@ -36,6 +36,7 @@ a.plain:hover {
     padding-top: 10px;
     color: #999;
     border-top: solid 1px #ddd;
+    text-align: center;
 }
 
 .footer > p {

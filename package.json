@@ -1,24 +1,23 @@
 {
-    "name": "FloraMap",
-    "description": "FloraMap Application",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "*",
-        "mongoose": "*",
-        "body-parser": "*",
-        "backbone": "*",
-        "socket.io": "*",
-        "mongodb": "*",
-        "bson": "*",
-        "morgan": "*",
-        "underscore": "*",
-        "bootstrap": "*",
-        "jquery": "*"
-    },
-
-    "engines": {
-        "node": "*",
-        "npm": "*"
-    }
+  "name": "FloraMap",
+  "description": "FloraMap Application",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "backbone": "*",
+    "body-parser": "*",
+    "bootstrap": "*",
+    "bson": "*",
+    "express": "*",
+    "jquery": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "socket.io": "*",
+    "underscore": "*"
+  },
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  }
 }

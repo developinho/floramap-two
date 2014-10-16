@@ -1,0 +1,63 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'view',
+1 verbose cli   'login.js' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose request where is /login.js
+6 verbose request registry https://registry.npmjs.org/
+7 verbose request id 8082e305235984be
+8 verbose url raw /login.js
+9 verbose url resolving [ 'https://registry.npmjs.org/', './login.js' ]
+10 verbose url resolved https://registry.npmjs.org/login.js
+11 verbose request where is https://registry.npmjs.org/login.js
+12 info trying registry request attempt 1 at 20:50:02
+13 http GET https://registry.npmjs.org/login.js
+14 http 404 https://registry.npmjs.org/login.js
+15 verbose headers { date: 'Thu, 16 Oct 2014 01:50:08 GMT',
+15 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+15 verbose headers   'content-type': 'application/json',
+15 verbose headers   'cache-control': 'max-age=0',
+15 verbose headers   'content-length': '52',
+15 verbose headers   'accept-ranges': 'bytes',
+15 verbose headers   via: '1.1 varnish',
+15 verbose headers   age: '0',
+15 verbose headers   'x-served-by': 'cache-ord1733-ORD',
+15 verbose headers   'x-cache': 'MISS',
+15 verbose headers   'x-cache-hits': '0',
+15 verbose headers   'x-timer': 'S1413424208.157607,VS0,VE162',
+15 verbose headers   'keep-alive': 'timeout=10, max=50',
+15 verbose headers   connection: 'Keep-Alive' }
+16 silly registry.get cb [ 404,
+16 silly registry.get   { date: 'Thu, 16 Oct 2014 01:50:08 GMT',
+16 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+16 silly registry.get     'content-type': 'application/json',
+16 silly registry.get     'cache-control': 'max-age=0',
+16 silly registry.get     'content-length': '52',
+16 silly registry.get     'accept-ranges': 'bytes',
+16 silly registry.get     via: '1.1 varnish',
+16 silly registry.get     age: '0',
+16 silly registry.get     'x-served-by': 'cache-ord1733-ORD',
+16 silly registry.get     'x-cache': 'MISS',
+16 silly registry.get     'x-cache-hits': '0',
+16 silly registry.get     'x-timer': 'S1413424208.157607,VS0,VE162',
+16 silly registry.get     'keep-alive': 'timeout=10, max=50',
+16 silly registry.get     connection: 'Keep-Alive' } ]
+17 error 404 404 Not Found: login.js
+17 error 404
+17 error 404 'login.js' is not in the npm registry.
+17 error 404 You should bug the author to publish it
+17 error 404
+17 error 404 Maybe try 'npm search login'
+17 error 404
+17 error 404 Note that you can also install from a
+17 error 404 tarball, folder, or http url, or git url.
+18 error System Windows_NT 6.2.9200
+19 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "view" "login.js"
+20 error cwd C:\Users\Kellison\Documents\GitHub\FloraMap\public\js\views
+21 error node -v v0.10.32
+22 error npm -v 1.4.28
+23 error code E404
+24 verbose exit [ 1, true ]
