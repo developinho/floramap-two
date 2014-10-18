@@ -3,6 +3,7 @@ bodyParser = require('body-parser'),
 path = require('path'),
 http = require('http'), 
 plant = require('./routes/plants'),
+index = require('./routes/index.'),
 app = express();
 
 var passport = require('passport');
@@ -35,14 +36,14 @@ http.createServer(app).listen(app.get('port'), function () {
 })
 
 app.get('/login', function(req, res) {
-  res.sendfile('public/tpl/LoginView.html');
+  res.sendfile('public/tpl/WineListItemView.html');
 });
 
 
 app.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/loginSuccess',
-    failureRedirect: '/loginFailure'
+    successRedirect: '/HomeView',
+    failureRedirect: '/WineView'
 })
   );
 
@@ -79,7 +80,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
         return done(null, false);
     }
 
-    Console.log("correct");
+    res.render('HomeView.html');
     return done(null, user);
 });
 });
@@ -87,7 +88,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 var mongoose = require('mongoose/');
 
-mongoose.connect('mongodb://localhost/Users');
+mongoose.connect('mongodb://localhost:27017/Users');
 
 var Schema = mongoose.Schema;
 var UserDetail = new Schema({
