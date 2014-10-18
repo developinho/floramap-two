@@ -35,7 +35,7 @@ http.createServer(app).listen(app.get('port'), function () {
 })
 
 app.get('/login', function(req, res) {
-  res.sendfile('public/tpl/HomeView.html');
+  res.sendfile('public/tpl/LoginView.html');
 });
 
 
