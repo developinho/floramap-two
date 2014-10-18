@@ -8,6 +8,7 @@
     "body-parser": "*",
     "bootstrap": "*",
     "bson": "*",
+    "errorhandler": "^1.2.2",
     "express": "*",
     "jquery": "*",
     "mongodb": "*",

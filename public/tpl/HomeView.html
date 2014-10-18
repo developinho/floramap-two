@@ -1,8 +1,12 @@
-    <div class="col-md-6"></div>
-    <div class="col-md-6 map_screen">
-            <article>
-                <span id="plants_map"></span>
-            </article>
+    <div class="col-md-12 welcome">
+        <h1>
+            <strong><img src="img/logo.png"  class="logo_img" style="max-width:95%" alt="FloraMap"></strong>
+        </h1>
+    </div>
+    <!--div class="col-md-6">
+            <section>
+                <div id="plants_map"></div>
+            </section>
 
             <script>
 
@@ -18,7 +22,7 @@
                         mapcanvas.id = 'mapcanvas';
                         mapcanvas.style.height =  '410px';
 
-                        document.querySelector('article').appendChild(mapcanvas);
+                        document.querySelector('#plants_map').appendChild(mapcanvas);
 
                         var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                         var myOptions = {
@@ -63,5 +67,4 @@
 
                 }
             </script>
-    </div> 
-</div>
+    </div--> 

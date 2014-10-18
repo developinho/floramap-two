@@ -1,29 +1,45 @@
-.brand {
-    font-family: 'Arvo';
+
+body *{
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(119, 119, 119);
+    font-style: normal;\
+}
+body .container{
+    margin-top: 57px;
+    /*padding-top: 10px; /* 80px to make the container go all the way to the bottom of the topbar */
+    /*z-index: 2; */
+    background-color: white;
+    /*max-height: 85%;*/
+    width: 100%;
+    height: 100%;
+}
+.logo_img {
+    max-width: 160px;
+    height: auto;
+    margin-top: -9px;
+}
+#login, form{
+    outline: 1px solid #D4D4D4;
+    outline-offset: 1px;
+    padding: 20px;
+}
+a{color: #37a0eb;}
+
+#map{
+    height:500px;
 }
 
-a.plain:link {
-    color: #333;
-    text-decoration: none;
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
-
-a.plain:active {
-    color: #333;
-    text-decoration: none;
+.welcome {
+    text-align: center;
 }
-
-a.plain:visited {
-    color: #333;
-    text-decoration: none;
-}
-
-a.plain:hover {
-    color: #333;
-    text-decoration: none;
-}
-
 .status-bar {
-    height: 60px;
+    margin-left: 20px
+        height: 60px;
 }
 
 .about-icon {
@@ -32,11 +48,10 @@ a.plain:hover {
 }
 
 .footer {
-    margin-top: 30px;
-    padding-top: 10px;
     color: #999;
-    border-top: solid 1px #ddd;
+    border-top: solid 3px #ddd;
     text-align: center;
+    background-color: white;
 }
 
 .footer > p {
@@ -44,56 +59,51 @@ a.plain:hover {
     padding-bottom: 4px !important;
 }
 
-h5 {
-    width: 100%;
-    white-space: nowrap;
-    margin-bottom: 4px;
-}
 
-.thumbnail {
-    min-width: 260px;
-}
-
-.thumbnails li {
-    margin-left: 0px !important;
-    margin-right: 20px !important;
-}
-
-legend {
-    font-family: 'Andika';
-}
-
-.home-hero {
-    font-family: "Andika";
-    font-size: 36;
-    color: white;
-    background-image: url('img/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: -19px;
-    padding: 180px;
-    text-align : center;
-    text-shadow: 1px 1px 1px #000;
-}
-
-@media only screen and ( max-width : 1000px ) {
-    .home-hero {
-        padding:100px;
+/*@media (max-width: 480px) {
+  .container {
+    max-width:  80% !important;
+    max-height:  70% !important;
+  }
+  .welcome {
+    max-width:  100% !important;
+  }
+    #map{        
+        width: 100%; 
+        z-index: 0;
     }
 }
 
-@media only screen and ( max-width : 480px ) {
-    .home-hero {
-        padding:32px;
+@media (min-width: 768px) {
+  .container {
+    max-width:  60% !important;
+  }
+  .welcome {
+    max-width:  80% !important;
+  }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:  60% !important;
     }
+    .welcome {
+        max-width:  80% !important;
+    }    
+
 }
 
-
-.home-hero .btn {
-    font-family: "arvo";
-    width: 160px;
-    margin: 10px 4px;
+@media (min-width: 1200px) {
+  .container {
+    max-width: 60% !important;
+  }
+  .welcome {
+    max-width:  80% !important;
+  }
 }
+
+*/
+
 
 /* Social proof buttons from GitHub & Twitter */
 .bs-docs-social {

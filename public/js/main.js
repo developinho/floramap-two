@@ -1,3 +1,15 @@
+function hideLogoImg(option){
+    if(option == true){
+        $('.navbar-brand span').css("display","block");
+        $('.navbar-brand img').css("display","none");  
+    }
+    else{
+        $('.navbar-brand span').css("display","none");
+        $('.navbar-brand img').css("display","block"); 
+    
+    }
+}
+
 var AppRouter = Backbone.Router.extend({
 
 	routes: {
@@ -20,7 +32,9 @@ var AppRouter = Backbone.Router.extend({
             this.homeView = new HomeView();
         }
         $('#content').html(this.homeView.el);
-        this.headerView.selectMenuItem('home-menu');
+        this.headerView.selectMenuItem('');
+        hideLogoImg(true);
+        //$('#map_view').load("tpl/MapView.html");
     },
 
     login: function () {
@@ -28,6 +42,8 @@ var AppRouter = Backbone.Router.extend({
             this.loginView = new LoginView();
         }
         $('#content').html(this.loginView.el);
+        this.headerView.selectMenuItem('login-menu');
+        hideLogoImg(false);
     },
 
 	list: function(page) {
@@ -37,6 +53,7 @@ var AppRouter = Backbone.Router.extend({
             $("#content").html(new PlantListView({model: plantList, page: p}).el);
         }});
         this.headerView.selectMenuItem('home-menu');
+        hideLogoImg(false);
     },
 
     plantDetails: function (id) {
@@ -45,12 +62,14 @@ var AppRouter = Backbone.Router.extend({
             $("#content").html(new PlantView({model: plant}).el);
         }});
         this.headerView.selectMenuItem();
+        hideLogoImg(false);
     },
 
 	addPlant: function() {
         var plant = new Plant();
         $('#content').html(new PlantView({model: plant}).el);
         this.headerView.selectMenuItem('add-menu');
+        hideLogoImg(false);
 	},
 
     about: function () {
@@ -59,11 +78,12 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.aboutView.el);
         this.headerView.selectMenuItem('about-menu');
+        hideLogoImg(false);
     }
 
 });
 
-utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'PlantView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });

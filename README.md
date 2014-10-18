@@ -13,13 +13,20 @@ Which are the functions of this app?
 
 It was built with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
 
+## Installations
+
+1. Download and install:
+   
+   - [Node.js](http://nodejs.org/)
+   
+   - [MongoDB](http://www.mongodb.org/)
+
+
 ## Running the application ##
 
-1. Download and install the [Node.js](http://nodejs.org/)
+1. Open the node.js prompt
 
-2. Open the node.js prompt
-
-3. Go to the directory project
+2. Go to the directory project
 
     `cd PATH_PROJECT`
     
@@ -29,6 +36,8 @@ It was built with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
 
     `node server`
 
-3. Open an web broweser and the url:
+4. Run the server database (mongodb)
+
+5. Open an web broweser and the url:
 
     [http://localhost:3000/](http://localhost:3000/)

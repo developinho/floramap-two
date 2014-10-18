@@ -2,6 +2,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     path = require('path'),
     http = require('http'), 
+    morgan = require('morgan'),
+    errorhandler = require('errorhandler'),
     plant = require('./routes/plants'),
     app = express();
 
@@ -10,9 +12,9 @@ process.env.NODE_ENV = 'development';
 if (process.env.NODE_ENV === 'development') {
     app.set('port', process.env.PORT || 3000);
     
-    
-   // app.use(logger); 
-    app.use(bodyParser.urlencoded());
+    app.use(errorhandler())
+    app.use(morgan('dev'));
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));
 
