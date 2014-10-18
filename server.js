@@ -29,9 +29,7 @@ app.delete('/plants/:id', plant.deletePlant);
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 })
-
-var mongodb = require('mongodb');
-
+/*
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://edgewater:floramap@ds047050.mongolab.com:47050/users');
 
@@ -50,3 +48,4 @@ var Kitten = mongoose.model('Kitten', kittySchema)
 var silence = new Kitten({ name: 'Silence' })
 console.log(silence.name)
 
+*/

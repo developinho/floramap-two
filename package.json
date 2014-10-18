@@ -16,7 +16,8 @@
     "morgan": "*",
     "socket.io": "*",
     "underscore": "*",
-    "passport": "*"
+    "passport": "*",
+    "passport-local": "*"
   },
   "engines": {
     "node": "*",
