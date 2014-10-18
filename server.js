@@ -1,11 +1,15 @@
 var express = require('express'),
-    bodyParser = require('body-parser'),
-    path = require('path'),
-    http = require('http'), 
-    plant = require('./routes/plants'),
-    app = express();
+bodyParser = require('body-parser'),
+path = require('path'),
+http = require('http'), 
+plant = require('./routes/plants'),
+app = express();
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 process.env.NODE_ENV = 'development';
 
@@ -14,9 +18,9 @@ if (process.env.NODE_ENV === 'development') {
     
     
    // app.use(logger); 
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
-    app.use(express.static(path.join(__dirname, 'public')));
+   app.use(bodyParser.urlencoded({ extended: true }));
+   app.use(bodyParser.json());
+   app.use(express.static(path.join(__dirname, 'public')));
 
 };
 
@@ -29,23 +33,69 @@ app.delete('/plants/:id', plant.deletePlant);
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 })
-/*
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://edgewater:floramap@ds047050.mongolab.com:47050/users');
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  // yay!
+app.get('/login', function(req, res) {
+  res.sendfile('public/tpl/HomeView.html');
 });
 
-var kittySchema = mongoose.Schema({
-    name: String
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/loginSuccess',
+    failureRedirect: '/loginFailure'
 })
+  );
 
-var Kitten = mongoose.model('Kitten', kittySchema)
+app.get('/loginFailure', function(req, res, next) {
+  res.send('Failed to authenticate');
+});
 
-var silence = new Kitten({ name: 'Silence' })
-console.log(silence.name)
+app.get('/loginSuccess', function(req, res, next) {
+  res.send('Successfully authenticated');
+});
 
-*/
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.use(new LocalStrategy(function(username, password, done) {
+  process.nextTick(function() {
+    UserDetails.findOne({
+      'username': username, 
+  }, function(err, user) {
+      if (err) {
+        return done(err);
+    }
+
+    if (!user) {
+        return done(null, false);
+    }
+
+    if (user.password != password) {
+        return done(null, false);
+    }
+
+    Console.log("correct");
+    return done(null, user);
+});
+});
+}));
+
+var mongoose = require('mongoose/');
+
+mongoose.connect('mongodb://localhost/Users');
+
+var Schema = mongoose.Schema;
+var UserDetail = new Schema({
+  username: String,
+  password: String
+}, {
+  collection: 'userInfo'
+});
+var UserDetails = mongoose.model('userInfo', UserDetail);
+
+
