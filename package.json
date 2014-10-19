@@ -9,13 +9,16 @@
     "bootstrap": "*",
     "bson": "*",
     "errorhandler": "^1.2.2",
+    "everyauth": "*",
     "express": "*",
     "jquery": "*",
-    "mongodb": "*",
-    "mongoose": "*",
+    "mongodb": "^2.0.3",
+    "mongoose": "^3.9.3",
     "morgan": "*",
     "socket.io": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "passport": "*",
+    "passport-local": "*"
   },
   "engines": {
     "node": "*",
