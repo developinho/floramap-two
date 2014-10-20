@@ -1,5 +1,14 @@
-<a href="#wines/<%= _id %>" class="thumbnail plain" style="text-align: center;">
-    <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="150" width="125" alt="">
+<section class="row">
+    <section class="col-md-1"></section>
+    <section class="col-md-10">
+
+
+<a href="#plants/<%= _id %>" class="plantView" style="text-align: left;" id="<%=_id%>">
+    <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="75" width="75" alt="" >
     <h5><%= name %></h5>
     <%= description %><br/>
 </a>
+        
+        </section>
+    <section class="col-md-1"></section>
+</section>

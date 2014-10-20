@@ -119,7 +119,9 @@ function onLocationFound(e) {
 
     var popup = '<div class="popup_marker">You are <strong>here!</strong></div>';
    // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
-    L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
+    var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
+    
+    marker.on('click', markerClick);
 
 }
 
@@ -135,8 +137,8 @@ function markerClick(e) {
 
 function fillFieldsLatlng(coord) {
     $(document).ready(function() {
-        var latfield = $('#plant-view-form #latplant');
-        var lngfield = $('#plant-view-form #lngplant');
+        var latfield = $('#plant-view-form #latitude');
+        var lngfield = $('#plant-view-form #longitude');
 
         if ((latfield.length > 0) && (lngfield.length > 0)) {
             latfield.val(coord.lat);
