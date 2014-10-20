@@ -120,13 +120,9 @@ function onLocationFound(e) {
     var popup = '<div class="popup_marker">You are <strong>here!</strong></div>';
    // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
     var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
-<<<<<<< HEAD
-    
-    marker.on('click', markerClick);
-=======
->>>>>>> origin/master
 
     marker.on('click', markerClick);
+
 }
 
 function onLocationError(e) {
