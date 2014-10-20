@@ -37,6 +37,33 @@ a{color: #37a0eb;}
 .welcome {
     text-align: center;
 }
+
+
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background-color: #d2f3cd}
+.popup_marker{text-align: center}
+
+.leaflet-control-command-interior
+{
+    width: 32px;
+    height: 30px;
+    display: block;
+    padding: 10px 0 0 0 ;
+    margin-left: 2px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 0px 7px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.leaflet-control-command-interior:hover
+{
+    background-color: #F4F4F4;
+}
+
+
 .status-bar {
     margin-left: 20px
         height: 60px;
@@ -58,6 +85,8 @@ a{color: #37a0eb;}
     padding-top: 4px !important;
     padding-bottom: 4px !important;
 }
+
+
 
 
 /*@media (max-width: 480px) {

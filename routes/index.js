@@ -1,4 +1,4 @@
-/*
+
 module.exports = function(passport){
  
   /* GET login page. */
@@ -28,4 +28,3 @@ module.exports = function(passport){
  
   return router;
 }
-*/

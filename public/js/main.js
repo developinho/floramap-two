@@ -50,16 +50,16 @@ var AppRouter = Backbone.Router.extend({
         var p = page ? parseInt(page, 10) : 1;
         var plantList = new PlantCollection();
         plantList.fetch({success: function(){
-            $("#content").html(new PlantListView({model: plantList, page: p}).el);
+            $("#content").html(new PlantListView({model: plantList, page: p}).el);  console.log("MAIN");
         }});
-        this.headerView.selectMenuItem('home-menu');
+        this.headerView.selectMenuItem('browse-menu');
         hideLogoImg(false);
     },
 
     plantDetails: function (id) {
         var plant = new Plant({_id: id});
         plant.fetch({success: function(){
-            $("#content").html(new PlantView({model: plant}).el);
+            $("#content").html(new PlantView({model: plant}).el);            
         }});
         this.headerView.selectMenuItem();
         hideLogoImg(false);
@@ -83,7 +83,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'PlantView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'PlantView', 'PlantListItemView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });

@@ -36,6 +36,8 @@ window.Plant= Backbone.Model.extend({
 
     defaults: {
         _id: null,
+        latitude: "",
+        longitude: "",
         name: "",
         description: "",
         picture: null

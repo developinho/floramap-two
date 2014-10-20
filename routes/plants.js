@@ -1,3 +1,26 @@
+var mongo = require('mongodb');
+
+var Server = mongo.Server,
+    Db = mongo.Db,
+    BSON = mongo.BSONPure;
+
+var server = new Server('localhost', 27017, {auto_reconnect: true});
+db = new Db('plantdb', server, {safe: true});
+
+db.open(function(err, db) {
+    if(!err) {
+        console.log("Connected to 'plantdb' database");
+        
+        db.collection('plants', {safe:true}, function(err, collection) {
+            
+            if (err) {
+                console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
+            }
+        });
+    }
+});
+
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving plant: ' + id);
@@ -72,14 +95,11 @@ var populateDB = function() {
 
     var plants = [
     {
-        name: "Red Rose",
-        notes: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
-        picture: "saint_cosme.jpg"
-    },
-    {
-        name: "White Rose",
-        notes: "A resurgence of interest in boutique vineyards has opened the door for this excellent foray into the dessert wine market. Light and bouncy, with a hint of black truffle, this wine will not fail to tickle the taste buds.",
-        picture: "lan_rioja.jpg"
+        latitude: "42.00361",
+        longitude: "-87.688458",
+        name: "First Plant",
+        description: "First plant added during the test",
+        picture: null
     }];
 
     db.collection('plants', function(err, collection) {
