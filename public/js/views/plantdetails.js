@@ -11,6 +11,7 @@ window.PlantView = Backbone.View.extend({
 
     events: {
         "change"        : "change",
+        "blur"        : "change",
         "click .save"   : "beforeSave",
         "click .delete" : "deletePlant",
         "drop #picture" : "dropHandler"
@@ -25,7 +26,7 @@ window.PlantView = Backbone.View.extend({
         var change = {};
         change[target.name] = target.value;
         this.model.set(change);
-
+        
         // Run validation rule (if any) on changed item
         var check = this.model.validateItem(target.id);
         if (check.isValid === false) {
@@ -38,6 +39,7 @@ window.PlantView = Backbone.View.extend({
     beforeSave: function () {
         var self = this;
         var check = this.model.validateAll();
+        
         if (check.isValid === false) {
             utils.displayValidationErrors(check.messages);
             return false;
@@ -54,6 +56,8 @@ window.PlantView = Backbone.View.extend({
                 self.render();
                 app.navigate('plants/' + model.id, false);
                 utils.showAlert('Success!', 'Plant saved successfully', 'alert-success');
+                
+                updateMap();
             },
             error: function () {
                 utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
@@ -65,6 +69,8 @@ window.PlantView = Backbone.View.extend({
         this.model.destroy({
             success: function () {
                 alert('Plant deleted successfully');
+                updateMap();
+                mylocation();
                 window.history.back();
             }
         });

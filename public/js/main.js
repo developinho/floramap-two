@@ -1,15 +1,3 @@
-function hideLogoImg(option){
-    if(option == true){
-        $('.navbar-brand span').css("display","block");
-        $('.navbar-brand img').css("display","none");  
-    }
-    else{
-        $('.navbar-brand span').css("display","none");
-        $('.navbar-brand img').css("display","block"); 
-    
-    }
-}
-
 var AppRouter = Backbone.Router.extend({
 
 	routes: {
@@ -25,6 +13,7 @@ var AppRouter = Backbone.Router.extend({
 	initialize: function () {
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
+        init_map();
     },
 
     home: function (id) {
@@ -33,8 +22,7 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.homeView.el);
         this.headerView.selectMenuItem('');
-        hideLogoImg(true);
-        //$('#map_view').load("tpl/MapView.html");
+        utils.hideLogoImg(true);
     },
 
     login: function () {
@@ -43,17 +31,17 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.loginView.el);
         this.headerView.selectMenuItem('login-menu');
-        hideLogoImg(false);
+        utils.hideLogoImg(false);
     },
 
 	list: function(page) {
         var p = page ? parseInt(page, 10) : 1;
         var plantList = new PlantCollection();
         plantList.fetch({success: function(){
-            $("#content").html(new PlantListView({model: plantList, page: p}).el);  console.log("MAIN");
+            $("#content").html(new PlantListView({model: plantList, page: p}).el);  
         }});
         this.headerView.selectMenuItem('browse-menu');
-        hideLogoImg(false);
+        utils.hideLogoImg(false);
     },
 
     plantDetails: function (id) {
@@ -62,14 +50,16 @@ var AppRouter = Backbone.Router.extend({
             $("#content").html(new PlantView({model: plant}).el);            
         }});
         this.headerView.selectMenuItem();
-        hideLogoImg(false);
+        $(".form-actions .delete").add();
+        utils.hideLogoImg(false);
     },
 
 	addPlant: function() {
         var plant = new Plant();
         $('#content').html(new PlantView({model: plant}).el);
         this.headerView.selectMenuItem('add-menu');
-        hideLogoImg(false);
+        $(".form-actions .delete").remove();
+        utils.hideLogoImg(false);
 	},
 
     about: function () {
@@ -78,7 +68,7 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.aboutView.el);
         this.headerView.selectMenuItem('about-menu');
-        hideLogoImg(false);
+        utils.hideLogoImg(false);
     }
 
 });

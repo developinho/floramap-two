@@ -53,6 +53,19 @@ window.utils = {
 
     hideAlert: function() {
         $('.alert').hide();
+    },
+    
+    hideLogoImg: function (option){
+        if(option == true){
+            $('.navbar-brand span').css("display","block");
+            $('.navbar-brand img').css("display","none");  
+        }
+        else{
+            $('.navbar-brand span').css("display","none");
+            $('.navbar-brand img').css("display","block"); 
+
     }
+}
+
 
 };

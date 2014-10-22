@@ -1,14 +1,11 @@
 <section class="row">
     <section class="col-md-1"></section>
-    <section class="col-md-10">
-
-
-<a href="#plants/<%= _id %>" class="plantView" style="text-align: left;" id="<%=_id%>">
-    <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="75" width="75" alt="" >
-    <h5><%= name %></h5>
-    <%= description %><br/>
-</a>
-        
+        <section class="col-md-10" style="text-align:center">
+            <a href="#plants/<%= _id %>" id="pl_<%= _id %>" id="<%=_id%>">
+                <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="75" width="75" alt="" >
+                <h5><%= name %></h5>
+                <%= description %><br/>
+            </a>
         </section>
     <section class="col-md-1"></section>
 </section>

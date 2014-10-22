@@ -1,31 +1,63 @@
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
+        Db = mongo.Db,
+        BSON = mongo.BSONPure;
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
+
+// Conect to the database hosted on mongolab
+
+var server = new Server('ds047440.mongolab.com', 47440, {auto_reconnect: true});
 db = new Db('plantdb', server, {safe: true});
 
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'plantdb' database");
-        
-        db.collection('plants', {safe:true}, function(err, collection) {
-            
-            if (err) {
-                console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
-            }
-        });
-    }
+db.open(function(err, database) {
+    database.authenticate("admin", "admin", function(err, res) {
+
+        if (!err) {
+            console.log("Connected to 'plantdb' database");
+
+            database.collection('plants', {safe: true}, function(err, collection) {
+                // If the collection "plants" doesn't exist
+                if (err) {
+                    console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
+                    //populateDB();
+                }
+            });
+        }
+        else {
+            console.log("Failure attempting to connect to the database 'plantdb'@" + server.host);
+        }
+    });
 });
+
+/*
+ // Conect to the database hosted on the local machine
+ var server = new Server('localhost', 27017, {auto_reconnect: true});
+ db = new Db('plantdb', server, {safe: true});
+ 
+ db.open(function(err, db) {
+ if(!err) {
+ console.log("Connected to 'plantdb' database");
+ 
+ db.collection('plants', {safe:true}, function(err, collection) {
+ 
+ // If the collection "plants" doesn't exist
+ if (err) {
+ console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
+ }
+ });
+ }
+ else{
+ console.log("Failure attempting to connect to the database 'plantdb'@"+server.host);
+ }
+ });*/
 
 
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving plant: ' + id);
     db.collection('plants', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+        collection.findOne({'_id': new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
     });
@@ -43,9 +75,9 @@ exports.addPlant = function(req, res) {
     var plant = req.body;
     console.log('Adding plant: ' + JSON.stringify(plant));
     db.collection('plants', function(err, collection) {
-        collection.insert(plant, {safe:true}, function(err, result) {
+        collection.insert(plant, {safe: true}, function(err, result) {
             if (err) {
-                res.send({'error':'An error has occurred'});
+                res.send({'error': 'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(result[0]));
                 res.send(result[0]);
@@ -61,10 +93,10 @@ exports.updatePlant = function(req, res) {
     console.log('Updating plant: ' + id);
     console.log(JSON.stringify(plant));
     db.collection('plants', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, plant, {safe:true}, function(err, result) {
+        collection.update({'_id': new BSON.ObjectID(id)}, plant, {safe: true}, function(err, result) {
             if (err) {
                 console.log('Error updating plant: ' + err);
-                res.send({'error':'An error has occurred'});
+                res.send({'error': 'An error has occurred'});
             } else {
                 console.log('' + result + ' document(s) updated');
                 res.send(plant);
@@ -77,9 +109,9 @@ exports.deletePlant = function(req, res) {
     var id = req.params.id;
     console.log('Deleting plant: ' + id);
     db.collection('plants', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+        collection.remove({'_id': new BSON.ObjectID(id)}, {safe: true}, function(err, result) {
             if (err) {
-                res.send({'error':'An error has occurred - ' + err});
+                res.send({'error': 'An error has occurred - ' + err});
             } else {
                 console.log('' + result + ' document(s) deleted');
                 res.send(req.body);
@@ -94,16 +126,17 @@ exports.deletePlant = function(req, res) {
 var populateDB = function() {
 
     var plants = [
-    {
-        latitude: "42.00361",
-        longitude: "-87.688458",
-        name: "First Plant",
-        description: "First plant added during the test",
-        picture: null
-    }];
+        {
+            latitude: "42.00361",
+            longitude: "-87.688458",
+            name: "First Plant",
+            description: "First plant added during the test",
+            picture: null
+        }];
 
     db.collection('plants', function(err, collection) {
-        collection.insert(plants, {safe:true}, function(err, result) {});
+        collection.insert(plants, {safe: true}, function(err, result) {
+        });
     });
 
 };

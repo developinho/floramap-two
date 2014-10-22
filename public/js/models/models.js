@@ -6,18 +6,18 @@ window.Plant= Backbone.Model.extend({
 
     initialize: function () {
         this.validators = {};
-
+        
         this.validators.name = function (value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
         };
         
         this.validators.latitude = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a longitude"};
-          };
-            
+            return value != '' ? {isValid: true} : {isValid: false, message: ""};
+        };
+        
         this.validators.longitude = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a latitude"};
-          };
+            return value != '' ? {isValid: true} : {isValid: false, message: ""};
+        };
         
     },
 

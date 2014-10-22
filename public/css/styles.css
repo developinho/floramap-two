@@ -1,47 +1,59 @@
-
 body *{
     font-family: 'Open Sans', sans-serif;
     color: rgb(119, 119, 119);
     font-style: normal;\
 }
+
 body .container{
     margin-top: 57px;
-    /*padding-top: 10px; /* 80px to make the container go all the way to the bottom of the topbar */
-    /*z-index: 2; */
     background-color: white;
-    /*max-height: 85%;*/
     width: 100%;
     height: 100%;
 }
+
+#content{
+    margin-top:15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .logo_img {
     max-width: 160px;
     height: auto;
     margin-top: -9px;
 }
-#login, form{
+
+#login, #plant-view-form{
     outline: 1px solid #D4D4D4;
     outline-offset: 1px;
     padding: 20px;
+    background-color: white;
 }
 a{color: #37a0eb;}
 
-#map{
-    height:500px;
+.visible{
+    display: inline;
 }
 
-.vcenter {
+.invisible{
+    display: none;
+}
+
+#map{
+    height:83%;
+    position: fixed;
     display: inline-block;
     vertical-align: middle;
-    float: none;
-}
-.welcome {
-    text-align: center;
 }
 
+.welcome { text-align: center;}
 
-.leaflet-popup-content-wrapper,.leaflet-popup-tip{background-color: #d2f3cd}
-.popup_marker{text-align: center}
+.updating{font-size: 50px;}
 
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background-color: #d2f3cd !importantç}
+.popup_marker{text-align: left}
+
+/* Apply a style on the "Current Position Control" (on the map)*/
 .leaflet-control-command-interior
 {
     width: 32px;
@@ -58,60 +70,81 @@ a{color: #37a0eb;}
     background-color: #FFFFFF;
 }
 
-.leaflet-control-command-interior:hover
-{
-    background-color: #F4F4F4;
+.leaflet-control-command-interior:hover{ background-color: #F4F4F4;}
+
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 200;
 }
 
-
-.status-bar {
-    margin-left: 20px
-        height: 60px;
+.alert {
+    width: 100%;
+    outline: 1px solid #D4D4D4;
+    outline-offset: 1px;
+    height: 60px;
 }
 
 .about-icon {
     float: left;
-    margin-right: 12px;
+    margin: 0 auto;
+    width: auto;
 }
 
 .footer {
     color: #999;
     border-top: solid 3px #ddd;
+    padding-top: 5px 0px 5px 0px;
     text-align: center;
     background-color: white;
+    height: 50px;
+    border-bottom: 1px solid #d0c7c7;
 }
 
 .footer > p {
     padding-top: 4px !important;
     padding-bottom: 4px !important;
+    font-size: 12px;
 }
 
 
+.plant-list {
+    min-width: 260px;
+    list-style: none;
+}
 
+.pagination-centered {
+  text-align: center;
+}
 
-/*@media (max-width: 480px) {
-  .container {
-    max-width:  80% !important;
-    max-height:  70% !important;
-  }
-  .welcome {
-    max-width:  100% !important;
-  }
+@media (max-width: 480px) {
+
     #map{        
-        width: 100%; 
-        z-index: 0;
+        position: static;
+        height: 350px !important;
+        margin-bottom: 35px;
     }
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width:  60% !important;
-  }
-  .welcome {
-    max-width:  80% !important;
-  }
+@media (max-width: 480px) {
+
+    #map{        
+        position: static;
+        height: 350px !important;
+        margin-bottom: 35px;
+    }
 }
 
+
+@media (max-width: 480px) AND (min-width: 768px)  {
+
+    #map{        
+        position: static;
+        margin-bottom: 35px;
+    }
+}
+
+/*
 @media (min-width: 992px) {
     .container {
         max-width:  60% !important;
@@ -166,5 +199,5 @@ a{color: #37a0eb;}
 
 .plantView {
     alignment-adjust: left;
-    
+
 }

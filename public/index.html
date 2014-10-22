@@ -4,53 +4,52 @@
     <meta charset="utf-8">
     <title>FloraMap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
+    <meta name="name" content="FloraMap">
+    <meta name="author" content="Project COMP 388/424: Cole, Jonatha, Kellison, Maxwell, Rafael">
+    <link rel="icon" href="img/icon.ico" type="image/x-icon">
+    
+    <!-- Styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700' rel='stylesheet' type='text/css'>
     <link href="css/styles.css" rel="stylesheet">
     
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
     
-    <style>
-
-
-    </style>
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="lib/leaflet.awesome-markers.js"></script>
 </head>
-<body>
+<body>        
         
     <header class="header"></header>
 
-    <section class="container">
+    <section class="container" style="height:100%">
         <section class="row">
-            <section id="content" class="col-xs-6 vcenter"></section><!--
-            --><section id="map" class="col-xs-6 vcenter" >
-            </section>
+            <section id="content" class="col-xs-12 col-sm-6 col-md-6 vcenter"></section><!--
+            --><section id="map" class="col-xs-12 col-sm-6 col-md-6 vcenter" ></section>
         </section>
     </section>
     
-    <footer class="footer row">
+    <footer class="footer row navbar-fixed-bottom">
         <p class="col-md-12">
             <a href="http://luc.edu/" target="_blank">Loyola University Chicago</a> - COMP 388/424 - Client-Side Web Design
             <br>
-            By Cole M. Johnson, Jonatha Nunes da Silva, Jose Kellison de A. Silva, Maxwell Erin Palmer, Rafael Ortiz
+            <span class="hidden-xs">
+                By Cole M. Johnson, Jonatha Nunes da Silva, Jose Kellison de A. Silva, Maxwell Erin Palmer, Rafael Ortiz
+            </span>
         </p>
     </footer> 
     
-    <!-- Le javascript
+    <section id="map_view_script" style="display:block"></section>
+    
+    <!-- Javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="lib/jquery-1.8.2.min.js"></script>
@@ -71,10 +70,21 @@
     <script src="js/views/plantdetails.js"></script>
     <script src="js/views/about.js"></script>
     <script src="js/main.js"></script>
+    <script src="./js/map_script.js"></script>
+    <!-- Scripts for show ad manager of maps (using Leaflet API >
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script src="./js/map_script.js"></script>     
+    <script src="./js/map_script.js"></script>-->     
     
-    <script src="lib/leaflet.awesome-markers.js"></script>
+   
+    <script>
+        // Hack to set the size of map "full height page"
+       /* $(document).ready(function(){
+            $(window).resize(function(){
+                var height_map = ($(window).height() - ($(".navbar").height()+$(".footer").height()));
+                $("#map").height(height_map);
+            });
+        });*/
+    </script>
     
 </body>
 </html>

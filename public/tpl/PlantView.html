@@ -1,34 +1,32 @@
 <section class="row">
     <section class="col-md-1"></section>
     <section class="col-md-10">
-        <form id="plant-view-form">
+        <form id="plant-view-form" >
             <fieldset>
                 <legend>Plant details</legend>
-                    <br>
-
                     <!--div class="control-group">
                         <label for="plantId" class="control-label">ID:</label>
                         <div class="controls">
                             <input id="planId" name="id" type="text" value="<%= _id === null ? '' : _id %>" disabled/>
                         </div>    
                     </div-->
-                    <div class="row control-group" style="margin-bottom:10px;padding-left:12px">
+                    <div class="row control-group" style="margin-bottom:10px;">
                         <div class="control-group col-xs-5">
                             <div class="input-group">
-                                <input type="text" id="latitude" name="latitude" class="form-control" placeholder="Latitude">
-                                <span class="input-group-addon">&#176;</span>
+                                <input type="text" id="latitude" name="latitude" class="form-control" value="<%= latitude %>" placeholder="Latitude" title="Latitude">
+                                <span class="input-group-addon" title="Latitude">&#176;</span>
                             </div>
                         </div>
                         <div class="control-group col-xs-5">
                             <div class="input-group">
-                                <input type="text" id="longitude" name="longitude" class="form-control" placeholder="Longitude">
-                                <span class="input-group-addon">&#176;</span>                            
+                                <input type="text" id="longitude" name="longitude" class="form-control" value="<%= longitude %>" placeholder="Longitude" title="Longitude">
+                                <span class="input-group-addon" title="Longitude">&#176;</span>                            
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <label for="name" class="control-label">Name</label>
-                        <input type="email" class="form-control" id="name" name="name" value="<%= name %>"/>
+                        <input type="name" class="form-control" id="name" name="name" value="<%= name %>"/>
 
                         <span class="form-control-feedback"></span>
                         <span class="help-block"></span>
