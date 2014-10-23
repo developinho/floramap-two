@@ -14,12 +14,13 @@ var baseLayers = {
 };
 
 var markers_added = [];
+var marker_temp = [];
 
 map = new L.map('map', {
     zoom: 10,
     minZoom: 2,
     zoomControl: false,
-    layers: [grayscale, streets]
+    layers: [streets]
 });
 
 
@@ -63,9 +64,16 @@ function showPlantMarkers() {
                 
                 // Add an event which will get the marker ID
                 map.on('popupopen', function(e) {
-                    
-                    if(e.popup._source._markerID != undefined){
-                        console.log(e.popup._source._markerID);                  
+                    var id = e.popup._source._markerID;
+                    if(id != undefined){
+                        if($('.hover').length > 0){
+                            $('.hover').removeClass('hover');
+                        }
+                        
+                        $("#pl_"+id).parent().parent().parent().addClass("hover");
+                        var tag_target = $("a[id='pl_"+ id +"']");
+                        $('html').animate({scrollTop: tag_target.offset().top-50},'fast');
+                        console.log(tag_target.offset().top);
                     }
                 });
                 
@@ -79,20 +87,21 @@ function showPlantMarkers() {
 }
 
 // Remove all markers from the map (except the current position)
-function removeMarkers(){
-    for(var i = 0; i < markers_added.length; i++){
-       map.removeLayer(markers_added[i]);
+function removeMarkers(markers){
+    for(var i = 0; i < markers.length; i++){
+       map.removeLayer(markers[i]);
     }
     
-    for(var i = 0; i < markers_added.length; i++){
+    for(var i = 0; i < markers.length; i++){
        markers_added.pop();
-    }
-    
+    }    
+
 }
 
 // Update the map by removing the elements and adding again
 function updateMap(){
-    removeMarkers();
+    removeMarkers(markers_added);
+    removeMarkers(marker_temp);
     showPlantMarkers();
 }
 
@@ -104,12 +113,12 @@ function addControls() {
     new L.Control.Zoom({position: 'topleft'}).addTo(map);
 
     // Add options of layers 
-    new L.control.layers(baseLayers).addTo(map);
+    //new L.control.layers(baseLayers).addTo(map);
 
     // Add new custom control to the map. It will get the current user location 
     L.Control.CurrentPosition = L.Control.extend({
         options: {
-            position: 'topleft',
+            position: 'topright',
         },
         onAdd: function(map) {
             var controlDiv = L.DomUtil.create('div', 'leaflet-control-command');
@@ -148,8 +157,8 @@ function onLocationFound(e) {
     var popup = '<div class="popup_marker">You are <strong>here!</strong></div>';
    // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
     var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
-    marker
-    marker.on('click', onMarkerClick);
+    
+    marker.on('click', onMarkerCurrentClick);
 
 }
 
@@ -158,9 +167,16 @@ function onLocationError(e) {
 }
 
 // Click on the marker
-function onMarkerClick(e) {
+function onMarkerCurrentClick(e) {
     var coord = e.latlng; 
+    removeMarkers(marker_temp);
     fillFieldsLatlng(coord)
+}
+
+function verifyElementExists(elem_id){
+    if($('#'+elem_id).length > 0)
+        return true;
+    return false;
 }
 
 // When the user clicks on the map, the field of latitude and longitude are filled with 
@@ -168,19 +184,28 @@ function onMarkerClick(e) {
 function onClickMap(e) {        
         var popLocation= e.latlng;
     
-        fillFieldsLatlng(popLocation);
-        
-        var iconMarker = L.icon({
-            iconUrl: '/img/marker_plants_blue.png',
-            iconSize: [35, 35], // size of the icon
-            iconAnchor: [17, 39], // point of the icon which will correspond to marker's location
-            popupAnchor: [0, -26] // point from which the popup should open relative to the iconAnchor
-        });
+        if (verifyElementExists('plant-view-form')){
 
-        var popup = '<p>This position was set up to the form.</p>';
-       // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
-        var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
-        markers_added.push(marker);
+            fillFieldsLatlng(popLocation);
+
+            var iconMarker = L.icon({
+                iconUrl: '/img/marker_plants_blue.png',
+                iconSize: [35, 35], // size of the icon
+                iconAnchor: [17, 39], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -26] // point from which the popup should open relative to the iconAnchor
+            });
+
+            removeMarkers(marker_temp);
+
+            var popup = '<p>This position was set up to the form.</p>';
+           // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
+            var new_marker_temp = new L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
+            marker_temp.push( new_marker_temp );
+            new_marker_temp.on('click', function(e){                
+                var popLocation= e.latlng;
+                fillFieldsLatlng(popLocation);
+            });
+        }
 }
 
 function onMoveMarker(e) {        
@@ -195,7 +220,7 @@ function fillFieldsLatlng(coord) {
         var latfield = $('#plant-view-form #latitude');
         var lngfield = $('#plant-view-form #longitude');
         
-        if ((latfield.length > 0) && (lngfield.length > 0)) { 
+        if ((verifyElementExists('plant-view-form #latitude')) && (verifyElementExists('plant-view-form #longitude'))) { 
             latfield.val(coord.lat);
             lngfield.val(coord.lng);
             latfield.trigger("change");

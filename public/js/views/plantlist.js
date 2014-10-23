@@ -10,13 +10,13 @@ window.PlantListView = Backbone.View.extend({
         var startPos = (this.options.page - 1) * 8;
         var endPos = Math.min(startPos + 8, len);
 
-        $(this.el).html('<ul class="plant-list"></ul>');
+        $(this.el).html('<ul></ul>');
 
         for (var i = startPos; i < endPos; i++) {
-            $('.plant-list', this.el).append(new PlantListItemView({model: plants[i]}).render().el);            
+            $('ul', this.el).append(new PlantListItemView({model: plants[i]}).render().el);            
         }
 
-        $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
+       // $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
 
         return this;
     }
