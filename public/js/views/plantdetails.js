@@ -11,7 +11,7 @@ window.PlantView = Backbone.View.extend({
 
     events: {
         "change"        : "change",
-        "blur"        : "change",
+       // "blur"        : "change",
         "click .save"   : "beforeSave",
         "click .delete" : "deletePlant",
         "drop #picture" : "dropHandler"

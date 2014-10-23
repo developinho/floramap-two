@@ -4,7 +4,7 @@ var AppRouter = Backbone.Router.extend({
 		""                   : "home",
 		"login"              : "login",
 		"plants"	         : "list",
-		"plants/page/:page"	 : "list",
+		//"plants/page/:page"	 : "list",
 		"plants/add"         : "addPlant",
 		"plants/:id"         : "plantDetails",
 		"about"              : "about"
@@ -40,6 +40,7 @@ var AppRouter = Backbone.Router.extend({
         plantList.fetch({success: function(){
             $("#content").html(new PlantListView({model: plantList, page: p}).el);  
         }});
+        updateMap();
         this.headerView.selectMenuItem('browse-menu');
         utils.hideLogoImg(false);
     },
@@ -51,6 +52,7 @@ var AppRouter = Backbone.Router.extend({
         }});
         this.headerView.selectMenuItem();
         $(".form-actions .delete").add();
+        $("img#thumbnail").add();
         utils.hideLogoImg(false);
     },
 
@@ -59,6 +61,7 @@ var AppRouter = Backbone.Router.extend({
         $('#content').html(new PlantView({model: plant}).el);
         this.headerView.selectMenuItem('add-menu');
         $(".form-actions .delete").remove();
+        $("img#thumbnail").remove();
         utils.hideLogoImg(false);
 	},
 

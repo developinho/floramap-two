@@ -39,8 +39,11 @@ function showPlantMarkers() {
                 var lat = plantListSaved[i].latitude;
                 var lng = plantListSaved[i].longitude;
                 
-                var popup_content = "<div class='popup_marker'><strong class='title_popup_marker'>"+plantListSaved[i].name+"</strong>"
-                                    +"<p>"+plantListSaved[i].description+"</p></div>";
+                var popup_content = "<div class='popup_marker'>"+
+                                    "<h5 class='title_popup_marker'>"+plantListSaved[i].name+
+                                    "<h6>("+lat+"&#176; , "+lng+"&#176;)</h6></h5>" +
+                                    "<p>"+plantListSaved[i].description+"</p>"+
+                                "</div>";
                 
                 var popup_title = plantListSaved[i].name;
                 var iconMarker = L.icon({
@@ -71,7 +74,7 @@ function showPlantMarkers() {
                         }
                         
                         $("#pl_"+id).parent().parent().parent().addClass("hover");
-                        var tag_target = $("a[id='pl_"+ id +"']");
+                        var tag_target = $("a[id='pl_"+ id +"']").parent().parent().parent();
                         $('html').animate({scrollTop: tag_target.offset().top-50},'fast');
                         console.log(tag_target.offset().top);
                     }
