@@ -16,6 +16,8 @@ window.PlantListView = Backbone.View.extend({
             $('ul', this.el).append(new PlantListItemView({model: plants[i]}).render().el);            
         }
 
+       // Activate the paginator (the line "plants/page/:page"	 : "list" need to be uncommented on 
+       // "main.js"
        // $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
 
         return this;

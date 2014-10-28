@@ -1,12 +1,14 @@
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
-        Db = mongo.Db,
-        BSON = mongo.BSONPure;
+    Db = mongo.Db,
+    BSON = mongo.BSONPure;
 
+/*********************************************************************************************/
+/* Use this block if you would like to use a remote database
+/*********************************************************************************************/
 
-// Conect to the database hosted on mongolab
-
+// Conect to the database hosted on a remote server
 var server = new Server('ds047440.mongolab.com', 47440, {auto_reconnect: true});
 db = new Db('plantdb', server, {safe: true});
 
@@ -19,8 +21,7 @@ db.open(function(err, database) {
             database.collection('plants', {safe: true}, function(err, collection) {
                 // If the collection "plants" doesn't exist
                 if (err) {
-                    console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
-                    //populateDB();
+                    console.log("The 'plants' collection doesn't exist.");
                 }
             });
         }
@@ -30,8 +31,10 @@ db.open(function(err, database) {
     });
 });
 
+/*********************************************************************************************/
+/* Use this block if you would like to use a local database (with no user authentication)
 /*
- // Conect to the database hosted on the local machine
+// Conect to the database hosted on the local machine
  var server = new Server('localhost', 27017, {auto_reconnect: true});
  db = new Db('plantdb', server, {safe: true});
  
@@ -43,14 +46,16 @@ db.open(function(err, database) {
  
  // If the collection "plants" doesn't exist
  if (err) {
- console.log("The 'plants' collection doesn't exist. Creating it with sample data...");
+ console.log("The 'plants' collection doesn't exist. ");
  }
  });
  }
  else{
  console.log("Failure attempting to connect to the database 'plantdb'@"+server.host);
  }
- });*/
+ });
+ 
+/*************************************************************************************************/
 
 
 exports.findById = function(req, res) {
@@ -119,24 +124,3 @@ exports.deletePlant = function(req, res) {
         });
     });
 }
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-// Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
-var populateDB = function() {
-
-    var plants = [
-        {
-            latitude: "42.00361",
-            longitude: "-87.688458",
-            name: "First Plant",
-            description: "First plant added during the test",
-            picture: null
-        }];
-
-    db.collection('plants', function(err, collection) {
-        collection.insert(plants, {safe: true}, function(err, result) {
-        });
-    });
-
-};

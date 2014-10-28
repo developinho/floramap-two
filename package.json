@@ -1,17 +1,14 @@
 {
   "name": "FloraMap",
-  "description": "FloraMap Application",
-  "version": "0.0.1",
+  "description": "FloraMap Application - Project 1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "backbone": "*",
     "body-parser": "*",
-    "bootstrap": "*",
     "bson": "^0.2.15",
     "errorhandler": "^1.2.2",
     "everyauth": "*",
     "express": "*",
-    "jquery": "*",
     "mongodb": "1.1.8",
     "mongoose": "^3.8.17",
     "morgan": "^1.4.0",
@@ -21,7 +18,7 @@
     "underscore": "*"
   },
   "engines": {
-    "node": "*",
-    "npm": "*"
+    "node": "0.10.32",
+    "npm": "1.4.28"
   }
 }

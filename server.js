@@ -7,13 +7,14 @@ var express = require('express'),
     plant = require('./routes/plants'),
     app = express();
 
-
+/*
+// Used for authentication
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 
 process.env.NODE_ENV = 'development';
 
@@ -22,10 +23,8 @@ if (process.env.NODE_ENV === 'development') {
     
     app.use(errorhandler())
     app.use(morgan('dev'));
-    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));
-
 };
 
 app.get('/plants', plant.findAll);
@@ -40,16 +39,19 @@ http.createServer(app).listen(app.get('port'), function () {
 
 
 
+/*
+** Code from tests trying to use authentication
+**
 
 app.get('/login', function(req, res) {
-  res.sendfile('public/tpl/WineListItemView.html');
+  res.sendfile('public/template/PlantListItemView.html');
 });
 
 
 app.post('/login',
   passport.authenticate('local', {
     successRedirect: '/HomeView',
-    failureRedirect: '/WineView'
+    failureRedirect: '/PlantView'
 })
   );
 
@@ -103,4 +105,4 @@ var UserDetail = new Schema({
 }, {
   collection: 'userInfo'
 });
-var UserDetails = mongoose.model('userInfo', UserDetail);
+var UserDetails = mongoose.model('userInfo', UserDetail); */

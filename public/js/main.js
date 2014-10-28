@@ -4,7 +4,7 @@ var AppRouter = Backbone.Router.extend({
 		""                   : "home",
 		"login"              : "login",
 		"plants"	         : "list",
-		//"plants/page/:page"	 : "list",
+		//"plants/page/:page"	 : "list", // used if pagination is ativated
 		"plants/add"         : "addPlant",
 		"plants/:id"         : "plantDetails",
 		"about"              : "about"
@@ -76,6 +76,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
+// All views need to be placed on this line
 utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'PlantView', 'PlantListItemView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();

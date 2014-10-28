@@ -11,7 +11,6 @@ window.PlantView = Backbone.View.extend({
 
     events: {
         "change"        : "change",
-       // "blur"        : "change",
         "click .save"   : "beforeSave",
         "click .delete" : "deletePlant",
         "drop #picture" : "dropHandler"
@@ -69,7 +68,7 @@ window.PlantView = Backbone.View.extend({
         this.model.destroy({
             success: function () {
                 alert('Plant deleted successfully');
-                updateMap();
+                updateMap(); // Update the markers on the map
                 mylocation();
                 window.history.back();
             }

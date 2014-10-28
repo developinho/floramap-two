@@ -4,6 +4,7 @@ window.Plant= Backbone.Model.extend({
 
     idAttribute: "_id",
 
+    // If you want to validate any field in the plant form, you need to put it on this function
     initialize: function () {
         this.validators = {};
         

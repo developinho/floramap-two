@@ -8,13 +8,9 @@ var mapAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap<
 var grayscale = L.tileLayer(mapUrl, {id: 'floramap.jppahgl2', attribution: mapAttr}),
         streets = L.tileLayer(mapUrl, {id: 'examples.map-i875mjb7', attribution: mapAttr});
 
-var baseLayers = {
-    "Grayscale": grayscale,
-    "Streets": streets
-};
 
-var markers_added = [];
-var marker_temp = [];
+var markers_added = []; // Markers loaded from the database
+var marker_temp = []; // Temporally markers
 
 map = new L.map('map', {
     zoom: 10,
@@ -199,7 +195,7 @@ function onClickMap(e) {
             removeMarkers(marker_temp);
 
             var popup = '<p>This position was set up to the form.</p>';
-           // var marker = L.marker(e.latlng, {icon: iconMarker}).addTo(map);
+            
             var new_marker_temp = new L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
             marker_temp.push( new_marker_temp );
             new_marker_temp.on('click', function(e){                
@@ -224,6 +220,8 @@ function fillFieldsLatlng(coord) {
         if ((verifyElementExists('plant-view-form #latitude')) && (verifyElementExists('plant-view-form #longitude'))) { 
             latfield.val(coord.lat);
             lngfield.val(coord.lng);
+            
+            // Ativate the "change" event with JQeury in order to the app be able to save the coordinates
             latfield.trigger("change");
             lngfield.trigger("change");
         }

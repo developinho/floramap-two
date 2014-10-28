@@ -12,7 +12,7 @@ body .container{
 }
 
 .container{
-margin-bottom:80px;
+    margin-bottom:80px;
 }
 
 #content{
@@ -85,7 +85,7 @@ input[type="file"]{
 }
 
 .about{
-margin-left: auto
+    margin-left: auto
 }
 
 .about-icon {
@@ -94,7 +94,7 @@ margin-left: auto
     width: auto;
     margin: 0 auto;
 }
- 
+
 .footer {
     color: #999;
     border-top: solid 3px #ddd;
@@ -125,34 +125,34 @@ ul{list-style: none;}
 }
 
 .plant-list-item {
-  display: table;
-  padding: 15px;
-  margin: 5px;
-  line-height: 20px;
-  border: 2px solid #ddd;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -webkit-transition: all 0.2s ease-in-out;
-     -moz-transition: all 0.2s ease-in-out;
-       -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
+    display: table;
+    padding: 15px;
+    margin: 5px;
+    line-height: 20px;
+    border: 2px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     background-color: white;
 }
 
 .plant-list-item:hover, .hover {
-  border-color:  rgba(23, 152, 0, 0.7);;
-  -webkit-box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
-     -moz-box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
-          box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
-  cursor: pointer;
+    border-color:  rgba(23, 152, 0, 0.7);;
+    -webkit-box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
+    -moz-box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
+    box-shadow: 0 3px 4px rgba(23, 152, 0, 0.7);
+    cursor: pointer;
 }
 
 .plant-list-item > .image{
- display: table-cell;   
+    display: table-cell;   
 }
 
 .plant-list-item > .image > img, img#thumbnail{
@@ -164,11 +164,11 @@ ul{list-style: none;}
 }
 
 .plant-list-item .modal img{
-text-align: center;
-max-width: 500px;
-height: auto;
-width: 100%;
-margin: 0px auto;
+    text-align: center;
+    max-width: 500px;
+    height: auto;
+    width: 100%;
+    margin: 0px auto;
 }
 
 .plant-list-item .information{
@@ -181,9 +181,9 @@ margin: 0px auto;
 }
 
 .plant-list-item .description{
- line-height: 20px;   
- text-indent: 10px;
- text-align: justify;
+    line-height: 20px;   
+    text-indent: 10px;
+    text-align: justify;
 }
 
 .plant-list-control{
@@ -196,18 +196,18 @@ hr{
 }
 
 .pagination-centered {
-  text-align: center;
-  margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .pagination > .active > a{
- background-color:  rgba(23, 152, 0, 0.7);
+    background-color:  rgba(23, 152, 0, 0.7);
     border-color: #ddd;
 }
 
 .pagination > .active >a:hover{
- background-color:  rgba(23, 152, 0, 0.7);
- cursor: default;
+    background-color:  rgba(23, 152, 0, 0.7);
+    cursor: default;
 }
 
 /** Ends here (Plant List Item) **/ 
@@ -219,65 +219,11 @@ hr{
         height: 350px !important;
         margin-bottom: 35px;
     }
-    
+
     #plant-view-form img#thumbnail{
         margin-top: 15px;
     }
-    
-}
 
-
-/*
-@media (min-width: 992px) {
-    .container {
-        max-width:  60% !important;
-    }
-    .welcome {
-        max-width:  80% !important;
-    }    
-
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 60% !important;
-  }
-  .welcome {
-    max-width:  80% !important;
-  }
-}
-
-*/
-
-
-/* Social proof buttons from GitHub & Twitter */
-.bs-docs-social {
-    padding: 15px 0;
-    text-align: center;
-    background-color: #f5f5f5;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Quick links on Home */
-.bs-docs-social-buttons {
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-.bs-docs-social-buttons li {
-    display: inline-block;
-    padding: 5px 8px;
-    line-height: 1;
-    *display: inline;
-    *zoom: 1;
-}
-
-.well h3 {
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 .plantView {
