@@ -9,6 +9,8 @@ Which are the functions of this app?
  2. The map shows the saved points which contain information about the plant (name, picture, notes etc)
  
  More details [here](https://drive.google.com/file/d/0B2FMzybPhQ9CTXNiMVVpUGVWcVk/view?usp=sharing)
+ 
+ You can see the current (Project 1) working [clicking here](http://floramap.herokuapp.com)
   
 ## Beginning
 

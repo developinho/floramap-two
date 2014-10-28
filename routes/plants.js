@@ -9,11 +9,11 @@ var Server = mongo.Server,
 /*********************************************************************************************/
 
 // Conect to the database hosted on a remote server
-var server = new Server('ds047440.mongolab.com', 47440, {auto_reconnect: true});
+var server = new Server('<SERVER_DB_URL', <SERVER_DB_PORT>, {auto_reconnect: true});
 db = new Db('plantdb', server, {safe: true});
 
 db.open(function(err, database) {
-    database.authenticate("admin", "admin", function(err, res) {
+    database.authenticate("<SERVER_DB_USER>", "<SERVER_DB_USER_PASSWORD>", function(err, res) {
 
         if (!err) {
             console.log("Connected to 'plantdb' database");
