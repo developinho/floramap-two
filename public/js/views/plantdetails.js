@@ -56,6 +56,7 @@ window.PlantView = Backbone.View.extend({
                 app.navigate('plants/' + model.id, false);
                 utils.showAlert('Success!', 'Plant saved successfully', 'alert-success');
                 
+                // Update the map in order to get the new plant also shown on the map
                 updateMap();
             },
             error: function () {
@@ -76,6 +77,8 @@ window.PlantView = Backbone.View.extend({
         return false;
     },
 
+    // This function is used to get the plant after the user drop a image file on a specific
+    // area of the page. However, it is not working well yet. 
     dropHandler: function (event) {
         event.stopPropagation();
         event.preventDefault();

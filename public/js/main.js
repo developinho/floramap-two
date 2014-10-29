@@ -13,7 +13,8 @@ var AppRouter = Backbone.Router.extend({
 	initialize: function () {
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
-        init_map();
+        
+        init_map(); // Initialize the map
     },
 
     home: function (id) {
@@ -22,6 +23,7 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.homeView.el);
         this.headerView.selectMenuItem('');
+        
         utils.hideLogoImg(true);
     },
 
@@ -40,7 +42,10 @@ var AppRouter = Backbone.Router.extend({
         plantList.fetch({success: function(){
             $("#content").html(new PlantListView({model: plantList, page: p}).el);  
         }});
+        
+        // Remove the current markers on the map and adding gain, in order to update
         updateMap();
+        
         this.headerView.selectMenuItem('browse-menu');
         utils.hideLogoImg(false);
     },
@@ -51,8 +56,10 @@ var AppRouter = Backbone.Router.extend({
             $("#content").html(new PlantView({model: plant}).el);            
         }});
         this.headerView.selectMenuItem();
+        
         $(".form-actions .delete").add();
         $("img#thumbnail").add();
+        
         utils.hideLogoImg(false);
     },
 
@@ -60,8 +67,10 @@ var AppRouter = Backbone.Router.extend({
         var plant = new Plant();
         $('#content').html(new PlantView({model: plant}).el);
         this.headerView.selectMenuItem('add-menu');
+        
         $(".form-actions .delete").remove();
         $("img#thumbnail").remove();
+        
         utils.hideLogoImg(false);
 	},
 
@@ -70,13 +79,14 @@ var AppRouter = Backbone.Router.extend({
             this.aboutView = new AboutView();
         }
         $('#content').html(this.aboutView.el);
+        
         this.headerView.selectMenuItem('about-menu');
         utils.hideLogoImg(false);
     }
 
 });
 
-// All views need to be placed on this line
+// ALL template views need to be placed on this line
 utils.loadTemplate(['HomeView','LoginView', 'HeaderView', 'PlantView', 'PlantListItemView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();

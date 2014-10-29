@@ -25,7 +25,7 @@ map = new L.map('map', {
  * This function add the markers which are saved in the database
  **/
 function showPlantMarkers() {
-    var plantList = new PlantCollection();
+    var plantList = new PlantCollection(); // findAll()
 
     plantList.fetch({success: function() {
             var plantListSaved = plantList.toJSON();
@@ -191,11 +191,12 @@ function onClickMap(e) {
                 iconAnchor: [17, 39], // point of the icon which will correspond to marker's location
                 popupAnchor: [0, -26] // point from which the popup should open relative to the iconAnchor
             });
-
+            // Remove a previous temporally marker
             removeMarkers(marker_temp);
 
             var popup = '<p>This position was set up to the form.</p>';
             
+            // Add a marker on the map, this one is used to mark the position where the user has clicked
             var new_marker_temp = new L.marker(e.latlng, {icon: iconMarker}).addTo(map).bindPopup(popup).openPopup();
             marker_temp.push( new_marker_temp );
             new_marker_temp.on('click', function(e){                
@@ -205,6 +206,7 @@ function onClickMap(e) {
         }
 }
 
+// Used to fill the fields when the marker is being dragged
 function onMoveMarker(e) {        
         var popLocation= e.latlng;
     
@@ -212,6 +214,7 @@ function onMoveMarker(e) {
     
 }
 
+// Fill the lt and lng fields on the form of add/update plants
 function fillFieldsLatlng(coord) {
     $(document).ready(function() {
         var latfield = $('#plant-view-form #latitude');
@@ -231,6 +234,7 @@ function fillFieldsLatlng(coord) {
     })
 }
 
+// Initialize the map adding controls, markers and current location
 function init_map(){
     
     showPlantMarkers();

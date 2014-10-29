@@ -4,11 +4,15 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
+
 /*********************************************************************************************/
 /* Use this block if you would like to use a remote database
 /*********************************************************************************************/
 
-// Conect to the database hosted on a remote server
+// - Conect to the database hosted on a remote server
+// - If the collection doesn't exist, it will be created at the first adding of new data
+// - Change the <VALUE_INSIDE> for the corresponding value
+/*
 var server = new Server('<SERVER_DB_URL', <SERVER_DB_PORT>, {auto_reconnect: true});
 db = new Db('plantdb', server, {safe: true});
 
@@ -21,7 +25,7 @@ db.open(function(err, database) {
             database.collection('plants', {safe: true}, function(err, collection) {
                 // If the collection "plants" doesn't exist
                 if (err) {
-                    console.log("The 'plants' collection doesn't exist.");
+                    console.log("The 'plants' collection doesn't exist yet.");
                 }
             });
         }
@@ -30,30 +34,32 @@ db.open(function(err, database) {
         }
     });
 });
+*/
 
 /*********************************************************************************************/
 /* Use this block if you would like to use a local database (with no user authentication)
-/*
-// Conect to the database hosted on the local machine
- var server = new Server('localhost', 27017, {auto_reconnect: true});
- db = new Db('plantdb', server, {safe: true});
+*/
+// - Conect to the database hosted on a remote server
+// - If the collection doesn't exist, it will be created at the first adding of new data
+// - Change the <VALUE_INSIDE> for the corresponding value
+var server = new Server('localhost', 27017, {auto_reconnect: true});
+db = new Db('plantdb', server, {safe: true});
  
- db.open(function(err, db) {
- if(!err) {
- console.log("Connected to 'plantdb' database");
- 
- db.collection('plants', {safe:true}, function(err, collection) {
- 
- // If the collection "plants" doesn't exist
- if (err) {
- console.log("The 'plants' collection doesn't exist. ");
- }
- });
- }
- else{
- console.log("Failure attempting to connect to the database 'plantdb'@"+server.host);
- }
- });
+db.open(function(err, db) {
+if(!err) {
+    console.log("Connected to 'plantdb' database");
+
+    db.collection('plants', {safe:true}, function(err, collection) {
+        // If the collection "plants" doesn't exist
+        if (err) {
+             console.log("The 'plants' collection doesn't exist yet.");
+        }
+    });
+}
+else{
+    console.log("Failure attempting to connect to the database 'plantdb'@"+server.host);
+}
+});
  
 /*************************************************************************************************/
 

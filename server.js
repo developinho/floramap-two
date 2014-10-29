@@ -19,6 +19,8 @@ app.use(passport.session());
 process.env.NODE_ENV = 'development';
 
 if (process.env.NODE_ENV === 'development') {
+    
+    // You can set the port used here
     app.set('port', process.env.PORT || 3000);
     
     app.use(errorhandler())
@@ -27,12 +29,14 @@ if (process.env.NODE_ENV === 'development') {
     app.use(express.static(path.join(__dirname, 'public')));
 };
 
+// Add the routes
 app.get('/plants', plant.findAll);
 app.get('/plants/:id', plant.findById);
 app.post('/plants', plant.addPlant);
 app.put('/plants/:id', plant.updatePlant);
 app.delete('/plants/:id', plant.deletePlant);
 
+// Create and start the server
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });

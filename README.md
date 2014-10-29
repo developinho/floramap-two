@@ -1,6 +1,6 @@
 ![Flora Map](https://github.com/edgewater/FloraMap/blob/master/public/img/logo.png)
 
-Flora MAP is an app used to storage and manager locations of plants.
+Flora MAP is an application used to storage and manager locations of plants.
 
 Which are the functions of this app?
 
@@ -10,7 +10,7 @@ Which are the functions of this app?
  
  More details [here](https://drive.google.com/file/d/0B2FMzybPhQ9CTXNiMVVpUGVWcVk/view?usp=sharing)
  
- You can see the current (Project 1) working [clicking here](http://floramap.herokuapp.com)
+ You can see the current application (Project 1) working [clicking here](http://floramap.herokuapp.com)
   
 ## Beginning
 
@@ -18,7 +18,7 @@ See this [this page](https://github.com/edgewater/FloraMap/wiki/First-steps) on 
  
  - know how to configure your local environment. 
 
- - read a tutorial about node. The Flora Map was based on this tutorial (made by [Christophe Coenraets](http://coenraets.org/blog/)).
+ - get a tutorial about Node.js. The Flora Map was based on this tutorial (made by [Christophe Coenraets](http://coenraets.org/blog/)).
 
 ## Running the application ##
 
