@@ -9,7 +9,7 @@
     "errorhandler": "^1.2.2",
     "everyauth": "*",
     "express": "*",
-    "mongodb": "1.1.8",
+    "mongodb": "3.6.1",
     "mongoose": "^5.9.7",
     "morgan": "^1.4.0",
     "passport": "*",
